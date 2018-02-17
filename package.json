@@ -7,6 +7,15 @@
   "private": true,
   "dependencies": {
     "amqplib": "^0.5.2",
-    "cron": "^1.3.0"
+    "body-parser": "^1.18.2",
+    "cron": "^1.3.0",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.6"
+  },
+  "scripts": {
+    "cron": "node cron",
+    "start": "node index",
+    "mongo": "./scripts/mongo-docker.sh",
+    "rabbit": "./scripts/rabbit-docker.sh"
   }
 }
