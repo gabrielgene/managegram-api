@@ -4,10 +4,10 @@ const mongooose = require('mongoose');
 const Profile = require('../models/profile');
 
 const dataExample = {
-  user: 'managerinsta997',
+  user: 'juliana',
   pass: 'insta@123',
   status: 'stop',
-  tag_type: 'disable',
+  tag_type: 'enable',
   tag_list: ['hero', 'food'],
   profile_type: 'disable',
   profile_list: ['marvel', 'facebook']
@@ -33,6 +33,10 @@ router.get('/profile', (req, res) => {
     });
   })
 });
+
+router.get('/update/:user', (req, res) => {
+  const { user } = req.params;
+})
 
 handlerError = (res, err) => {
   return res.status(500).json({ status: 500, message: err.message });
