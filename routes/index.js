@@ -4,13 +4,15 @@ const mongooose = require('mongoose');
 const Profile = require('../models/profile');
 
 const dataExample = {
-  user: 'juliana',
+  user: 'managerinsta97',
   pass: 'insta@123',
-  status: 'stop',
+  status: 'start',
   tag_type: 'enable',
   tag_list: ['hero', 'food'],
   profile_type: 'disable',
-  profile_list: ['marvel', 'facebook']
+  profile_list: ['marvel', 'facebook'],
+  dm_type: 'enable',
+  dm_message: 'Olá, se chegou é pq funcionou.'
 }
 
 router.get('/', (req, res) => {

@@ -1,9 +1,10 @@
 const CronJob = require('cron').CronJob;
 const amqp = require('amqplib/callback_api');
 const task = require('./task');
+const dm = require('./dm');
 
-const job = new CronJob({
-  cronTime: '*/1 * * * *',
+const task_job = new CronJob({
+  cronTime: '*/30 * * * *',
   onTick: () => {
     task();
   },
@@ -11,4 +12,14 @@ const job = new CronJob({
   timeZone: 'America/Sao_Paulo'
 });
 
-job.start();
+const dm_job = new CronJob({
+  cronTime: '*/1 * * * *',
+  onTick: () => {
+    dm();
+  },
+  start: false,
+  timeZone: 'America/Sao_Paulo'
+});
+
+task_job.start();
+dm_job.start();

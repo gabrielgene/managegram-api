@@ -14,7 +14,7 @@ const task = () => {
     profiles.filter(profile => profile.status !== 'stop').forEach(profile => {
       amqp.connect('amqp://127.0.0.1', function (err, conn) {
         conn.createChannel(function (err, ch) {
-          const q = 'task_queue';
+          const q = 'dm_queue';
           const msg = JSON.stringify(profile);
 
           ch.assertQueue(q, { durable: true });

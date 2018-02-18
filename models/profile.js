@@ -9,6 +9,8 @@ const ProfileSchema = new mongoose.Schema({
   tag_list: {type: Array},
   profile_type: {type: String},
   profile_list: {type: Array},
+  dm_type: {type: String},
+  dm_message: {type: String},
 });
 
 module.exports = mongoose.model('Profile', ProfileSchema);
