@@ -11,6 +11,7 @@ const ProfileSchema = new mongoose.Schema({
   profile_list: {type: Array},
   dm_type: {type: String},
   dm_message: {type: String},
+  last_follower: {type: String}
 });
 
 module.exports = mongoose.model('Profile', ProfileSchema);

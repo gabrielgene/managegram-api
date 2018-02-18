@@ -4,7 +4,7 @@ const amqp = require('amqplib/callback_api');
 const mongoose = require('mongoose');
 const Profile = require('../models/profile');
 
-const task = () => {
+const dm = () => {
   mongoose.connect('mongodb://172.17.0.4:27017/admin', (err, res) => {
     if (err) throw err;
     console.log('Connected to MongoDB');
@@ -27,4 +27,5 @@ const task = () => {
   });
 }
 
-module.exports = task;
+dm();
+module.exports = dm;

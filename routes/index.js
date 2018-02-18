@@ -12,7 +12,8 @@ const dataExample = {
   profile_type: 'disable',
   profile_list: ['marvel', 'facebook'],
   dm_type: 'enable',
-  dm_message: 'Olá, se chegou é pq funcionou.'
+  dm_message: 'Olá, se chegou é pq funcionou.',
+  last_follower: ''
 }
 
 router.get('/', (req, res) => {

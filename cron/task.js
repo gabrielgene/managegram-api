@@ -27,4 +27,5 @@ const task = () => {
   });
 }
 
+task()
 module.exports = task;
