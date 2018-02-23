@@ -6,7 +6,7 @@ const config = require('./config');
 const mongohost = process.env.MONGODB_HOST || config.mongo.uri;
 const mongodb = process.env.MONGODB_DB || config.mongo.db;
 
-mongoose.connect('mongodb://localhost:27017/admin', (err, res) => {
+mongoose.connect('mongodb://mongo:27017', (err, res) => {
   if (err) throw err;
   console.log('Connected to MongoDB');
 });

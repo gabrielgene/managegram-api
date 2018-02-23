@@ -27,7 +27,6 @@ router.get('/all', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-  // const { body } = req;
   const body = dataExample;
   Profile.findOne({ user: body.user }, (err, data) => {
     if (err) handlerError(res, err);
@@ -39,10 +38,6 @@ router.get('/profile', (req, res) => {
     });
   })
 });
-
-router.get('/update/:user', (req, res) => {
-  const { user } = req.params;
-})
 
 handlerError = (res, err) => {
   return res.status(500).json({ status: 500, message: err.message });

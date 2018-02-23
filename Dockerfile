@@ -1,8 +1,13 @@
-FROM node:latest
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app
+FROM node:argon
+
+RUN mkdir -p /app
+WORKDIR /app
+
+COPY package.json /app
 RUN npm install
-COPY . /usr/src/app
+
+COPY . /app
+
 EXPOSE 5000
+
 CMD ["npm", "start"]
