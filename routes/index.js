@@ -17,8 +17,11 @@ const dataExample = {
 }
 
 router.get('/', (req, res) => {
+  return res.status(200).send('Ok');
+});
+
+router.get('/all', (req, res) => {
   Profile.find({}, (err, data) => {
-    console.log(data)
     return res.status(200).json(data);
   });
 });
