@@ -8,9 +8,9 @@ const dataExample = {
   pass: 'insta@123',
   status: 'start',
   tag_type: 'enable',
-  tag_list: ['hero', 'food'],
-  profile_type: 'disable',
-  profile_list: ['marvel', 'facebook'],
+  tag_list: ['hero'],
+  profile_type: 'enable',
+  profile_list: ['marvel'],
   dm_type: 'enable',
   dm_message: 'Olá, se chegou é pq funcionou.',
   last_follower: ''

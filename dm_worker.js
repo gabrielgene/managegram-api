@@ -27,8 +27,6 @@ amqp.connect('amqp://localhost', function (err, conn) {
 
           Client.Session.create(device, storage, user, pass)
             .then(function (session) {
-              // Now you have a session, we can follow / unfollow, anything...
-              // And we want to follow Instagram official profile
               return [session, Client.Account.searchForUser(session, follow)]
             })
             .spread(function (session, account) {
