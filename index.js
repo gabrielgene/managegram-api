@@ -6,7 +6,7 @@ const config = require('./config');
 const mongohost = process.env.MONGODB_HOST || config.mongo.uri;
 const mongodb = process.env.MONGODB_DB || config.mongo.db;
 
-mongoose.connect('mongodb://mongo:27017', (err, res) => {
+mongoose.connect('mongodb://172.17.0.2:27017', (err, res) => {
   if (err) throw err;
   console.log('Connected to MongoDB');
 });
@@ -27,7 +27,7 @@ app.all('/*', (req, res, next) => {
   }
 });
 
-app.use('/', require('./routes'));
+app.use('/api', require('./routes'));
 
 app.use((req, res, next) => {
   res.status(404);

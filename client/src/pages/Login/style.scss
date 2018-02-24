@@ -1,0 +1,17 @@
+.LoginForm {
+  height: 100%;
+
+  &-title {
+    color: #de4d6f !important;
+  }
+
+  &-button {
+    background-color: #de4d6f !important;
+    color: white !important;
+  }
+
+  &-register {
+    color: #de4d6f !important;
+    cursor: pointer;
+  }
+}

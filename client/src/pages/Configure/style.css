@@ -1,0 +1,29 @@
+.Configure-account {
+  padding: 16px;
+  padding-right: 72px;
+  background-color: #37474f;
+  display: flex;
+  justify-content: space-between; }
+  .Configure-account-verify {
+    padding: 24px;
+    max-width: 584px;
+    width: 100%; }
+  .Configure-account-manager {
+    margin-right: 24px; }
+    .Configure-account-manager-item {
+      display: block !important;
+      min-height: 24px !important; }
+
+.Configure-tasks {
+  padding: 16px; }
+  .Configure-tasks-group-card-list {
+    height: 143px !important;
+    overflow: auto !important; }
+    .Configure-tasks-group-card-list-item {
+      display: flex;
+      margin-top: 10px;
+      margin-left: 24px; }
+  .Configure-tasks-group-card-dm {
+    width: 400px !important; }
+    .Configure-tasks-group-card-dm-button {
+      margin-top: 8px; }

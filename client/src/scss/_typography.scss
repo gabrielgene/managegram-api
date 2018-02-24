@@ -1,0 +1,87 @@
+$font-sizes: 10 12 14 16 18 20 24 28 32 36 40 48 56 64;
+$font-weights: (
+  "light": 200,
+  "regular": 400,
+  "medium": 600,
+  "bold": 800
+);
+
+// Mixins
+@mixin text-variant($font-weight, $font-size, $line-height: null) {
+  @if map-has-key($font-weights, $font-weight) {
+    $font-weight: map-get($font-weights, $font-weight);
+  }
+  font-size: $font-size;
+  font-weight: $font-weight;
+  @if ($line-height) {
+    line-height: $line-height;
+  }
+}
+
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+
+// Placeholders
+@each $weight in map-keys($font-weights) {
+  @each $size in $font-sizes {
+    %#{'text-' + $weight + '-' + $size} {
+      @include text-variant($weight, #{$size + 'px'});
+    }
+  }
+}
+
+%text-italic {
+  font-style: italic;
+}
+
+%text-light {
+  font-weight: map-get($font-weights, "light");
+}
+
+%text-bold {
+  font-weight: map-get($font-weights, "bold");
+}
+
+@mixin mystique-typography {
+  html {
+    font-family: $font-family-sans-serif;
+    @extend %text-regular-14;
+  }
+
+  .display-4 {
+    @extend %text-medium-56;
+  }
+
+  .display-3 {
+    @extend %text-medium-48;
+  }
+
+  .display-2 {
+    @extend %text-medium-36;
+  }
+
+  .display-1 {
+    @extend %text-medium-24;
+  }
+
+  .text-italic {
+    @extend %text-italic;
+  }
+
+  .text-light {
+    @extend %text-light;
+  }
+
+  .text-bold {
+    @extend %text-bold;
+  }
+}

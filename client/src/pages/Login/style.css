@@ -1,0 +1,10 @@
+.LoginForm {
+  height: 100%; }
+  .LoginForm-title {
+    color: #de4d6f !important; }
+  .LoginForm-button {
+    background-color: #de4d6f !important;
+    color: white !important; }
+  .LoginForm-register {
+    color: #de4d6f !important;
+    cursor: pointer; }

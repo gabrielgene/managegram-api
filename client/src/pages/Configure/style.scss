@@ -1,0 +1,54 @@
+@import "../../scss/_variables.scss";
+@import "../../scss/typography.scss";
+
+.Configure {
+  &-account {
+    padding: $spacer * 2;
+    padding-right: $spacer * 9;
+    background-color: #37474f;
+    display: flex;
+    justify-content: space-between;
+
+    &-verify {
+      padding: $spacer * 3;
+      max-width: $spacer * 73;
+      width: 100%;
+    }
+
+    &-manager {
+      margin-right: $spacer * 3;
+
+      &-item {
+        display: block !important;
+        min-height: ($spacer * 3) !important;
+      }
+    }
+  }
+
+  &-tasks {
+    padding: $spacer * 2;
+
+    &-group {
+      &-card {
+        &-list {
+          height: 143px !important;
+          overflow: auto !important;
+
+          &-item {
+            display: flex;
+            margin-top: $spacer + 2;
+            margin-left: $spacer * 3;
+          }
+        }
+
+        &-dm {
+          width: 400px !important;
+
+          &-button {
+            margin-top: $spacer;
+          }
+        }
+      }
+    }
+  }
+}
