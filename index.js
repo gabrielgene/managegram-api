@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config');
+const path = require('path');
+const cors = require('cors');
 
 const mongohost = process.env.MONGODB_HOST || config.mongo.uri;
 const mongodb = process.env.MONGODB_DB || config.mongo.db;
@@ -13,26 +15,19 @@ mongoose.connect('mongodb://172.17.0.2:27017', (err, res) => {
 
 const app = express();
 
-app.use(bodyParser.json());
-
-app.all('/*', (req, res, next) => {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "POST, GET, PATCH, OPTIONS, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Credentials", "true");
-  if (req.method == 'OPTIONS') {
-    res.status(200).end();
-  } else {
-    next();
-  }
-});
-
-app.use('/api', require('./routes'));
-
-app.use((req, res, next) => {
-  res.status(404);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Accept-Encoding, Accept-Language, Access-Control-Request-Headers, Access-Control-Request-Method");
   next();
 });
+
+app.use('/api', cors(), bodyParser.json(), require('./routes'));
+
+app.use('/', express.static(path.join(__dirname, 'client/build')));
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// })
 
 app.set('port', process.env.PORT || config.app.port);
 
