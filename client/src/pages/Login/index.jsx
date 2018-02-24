@@ -30,9 +30,13 @@ class LoginForm extends Component {
 
     const loginStatus = this.login(user, pass);
 
-    loginStatus === 200 ? this.props.router.push('/home') : ''
-    loginStatus === 409 ? this.setState({ error: true }) : ''
-    loginStatus === 201 ? this.props.router.push('/home') : ''
+    if (loginStatus === 200) {
+      this.props.router.push('/home');
+    } else if (loginStatus === 409) {
+      this.setState({ error: true })
+    } else if (loginStatus === 201) {
+      this.props.router.push('/home');
+    }
   }
 
   render() {
@@ -67,6 +71,7 @@ class LoginForm extends Component {
                   name='user'
                   value={user}
                   onChange={this.handleChange}
+                  required
                 />
                 <Form.Input
                   fluid
@@ -77,6 +82,7 @@ class LoginForm extends Component {
                   name='pass'
                   value={pass}
                   onChange={this.handleChange}
+                  required
                 />
                 <Button className="LoginForm-button" fluid size='large'>Entrar</Button>
                 <Message
