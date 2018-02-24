@@ -15,22 +15,12 @@ mongoose.connect('mongodb://172.17.0.2:27017', (err, res) => {
 
 const app = express();
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Accept-Encoding, Accept-Language, Access-Control-Request-Headers, Access-Control-Request-Method");
-  next();
-});
-
 app.use('/api', cors(), bodyParser.json(), require('./routes'));
 
-app.use('/', express.static(path.join(__dirname, 'client/build')));
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-// })
+app.use('/app', express.static(path.join(__dirname, 'client/build')));
 
 app.set('port', process.env.PORT || config.app.port);
 
 app.listen(app.get('port'), () => {
   console.log(`service RESTful API server started on: ${app.get('port')}`);
-})
+});
