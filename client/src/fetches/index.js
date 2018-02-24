@@ -16,16 +16,18 @@ export const postLogin = (login) => {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify(login),
   }).then( res => res.status).catch(createErrorHandler(500));
 };
 
 export const getConfig = (userId) => {
-  return fetch(`/api/config/${userId}`, {
+  return fetch('/api/all', {
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
   }).then(handleHttpStatus).catch(createErrorHandler({}));
 };

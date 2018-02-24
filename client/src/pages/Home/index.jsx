@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Topbar from '../../components/Topbar';
+import { getConfig } from '../../fetches';
 import { Icon, Card, Form, List, Button, TextArea, Checkbox, Message } from 'semantic-ui-react';
 import './style.css';
 

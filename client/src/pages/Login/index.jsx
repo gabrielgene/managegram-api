@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { withRouter } from 'react-router';
+import { getConfig } from '../../fetches';
 import './style.css';
 
 const link = 'https://seeklogo.com/images/I/instagram-new-2016-logo-4773FE3F99-seeklogo.com.png';
@@ -37,6 +38,15 @@ class LoginForm extends Component {
     } else if (loginStatus === 201) {
       this.props.router.push('/home');
     }
+  }
+
+  componentDidMount() {
+    this.getConfigUser();
+  }
+
+  getConfigUser = async () => {
+    const data = await getConfig('managerinsta97');
+    console.log(data);
   }
 
   render() {
