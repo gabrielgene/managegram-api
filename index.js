@@ -21,11 +21,11 @@ app.get('/', (req, res) => {
 
 app.use('/api', cors(), bodyParser.json(), require('./routes'));
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+// app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/app', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// app.get('/app', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 
 app.set('port', process.env.PORT || config.app.port);
 

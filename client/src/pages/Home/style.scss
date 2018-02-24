@@ -2,6 +2,8 @@
 @import "../../scss/typography.scss";
 
 .Configure {
+  padding: $spacer;
+
   &-account {
     padding: $spacer * 2;
     padding-right: $spacer * 9;
@@ -18,6 +20,10 @@
     &-manager {
       margin-right: $spacer * 3;
 
+      &-button {
+        margin-bottom: $spacer !important;
+      }
+
       &-item {
         display: block !important;
         min-height: ($spacer * 3) !important;
@@ -30,6 +36,11 @@
 
     &-group {
       &-card {
+        &-button {
+          margin-top: ($spacer * 3) !important;
+          margin-left: ($spacer * 3) !important;
+        }
+
         &-list {
           height: 143px !important;
           overflow: auto !important;

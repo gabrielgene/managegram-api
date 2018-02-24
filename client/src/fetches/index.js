@@ -19,4 +19,13 @@ export const postLogin = (login) => {
     },
     body: JSON.stringify(login),
   }).then( res => res.status).catch(createErrorHandler(500));
-}
+};
+
+export const getConfig = (userId) => {
+  return fetch(`/api/config/${userId}`, {
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(handleHttpStatus).catch(createErrorHandler({}));
+};

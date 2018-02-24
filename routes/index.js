@@ -7,14 +7,14 @@ const md5 = require('blueimp-md5');
 const dataExample = {
   user: 'mmanagerinsta97',
   pass: 'insta@123',
-  // status: 'start',
-  // tag_type: 'enable',
-  // tag_list: ['hero'],
-  // profile_type: 'enable',
-  // profile_list: ['marvel'],
-  // dm_type: 'enable',
-  // dm_message: 'Olá, se chegou é pq funcionou.',
-  // last_follower: ''
+  status: 'start',
+  tag_type: 'enable',
+  tag_list: ['hero'],
+  profile_type: 'enable',
+  profile_list: ['marvel'],
+  dm_type: 'enable',
+  dm_message: 'Olá, se chegou é pq funcionou.',
+  last_follower: ''
 }
 
 router.get('/', (req, res) => {

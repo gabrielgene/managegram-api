@@ -5,17 +5,15 @@ import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 
 import Login from './pages/Login';
-import Base from './pages/Base';
-import Configure from './pages/Configure';
+import Home from './pages/Home';
 
 import registerServiceWorker from './registerServiceWorker';
 
-const HomePage = () => (<Base><Configure /></Base>);
 
 const App = () => (
   <Router history={browserHistory}>
     <Route path="/" component={Login} />
-    <Route path="/home" component={HomePage} />
+    <Route path="/home" component={Home} />
     {/* <Redirect path="**" to="/" /> */}
   </Router>
 );
