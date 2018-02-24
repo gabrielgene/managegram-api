@@ -11,22 +11,32 @@ class LoginForm extends Component {
     this.state = {
       user: '',
       pass: '',
+      error: false,
     }
+  }
+
+  login = (user, pass) => {
+    if (user === 'gabriel' && pass === '123') return 200;
+    if (user === 'gabriel') return 409;
+    const newAccount = window.confirm('Deseja criar uma nova conta ?');
+    const loginStatus = newAccount ? 201 : null;
+    return loginStatus;
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
+
   handleSubmit = () => {
     const { user, pass } = this.state;
-    if (user === 'gabriel' && pass === '123') {
-      this.props.router.push('/home');
-    } else {
-      alert('Dados incorretos');
-    }
+
+    const loginStatus = this.login(user, pass);
+
+    loginStatus === 200 ? this.props.router.push('/home') : ''
+    loginStatus === 409 ? this.setState({ error: true }) : ''
+    loginStatus === 201 ? this.props.router.push('/home') : ''
   }
 
   render() {
-    const { user, pass } = this.state;
-    console.log(this.props)
+    const { user, pass, error } = this.state;
 
     return (
       <div className='LoginForm'>
@@ -45,9 +55,9 @@ class LoginForm extends Component {
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' textAlign='center' className="LoginForm-title">
               <Image src={link} />
-              {' '}Acessar o Managegram
+              {' '}Acessar o ManageGram
             </Header>
-            <Form size='large' onSubmit={this.handleSubmit}>
+            <Form error={error} size='large' onSubmit={this.handleSubmit}>
               <Segment stacked>
                 <Form.Input
                   fluid
@@ -69,6 +79,10 @@ class LoginForm extends Component {
                   onChange={this.handleChange}
                 />
                 <Button className="LoginForm-button" fluid size='large'>Entrar</Button>
+                <Message
+                  error
+                  header='Senha incorreta'
+                />
               </Segment>
             </Form>
             <Message>
