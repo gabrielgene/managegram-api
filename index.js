@@ -15,9 +15,17 @@ mongoose.connect('mongodb://172.17.0.2:27017', (err, res) => {
 
 const app = express();
 
+app.get('/', (req, res) => {
+  res.status(200).send('Ok');
+})
+
 app.use('/api', cors(), bodyParser.json(), require('./routes'));
 
-app.use('/app', express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('/app', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 app.set('port', process.env.PORT || config.app.port);
 

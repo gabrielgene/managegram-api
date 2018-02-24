@@ -2,55 +2,7 @@
 @import "../../scss/typography.scss";
 
 .Base {
-  height: 100vh;
-
   &-modules {
-    height: calc(99vh - 64px);
-    overflow: auto;
     padding: $spacer * 3;
-    width: calc(100% - 260px);
-  }
-}
-
-.Topbar {
-  width: 100%;
-  height: $spacer * 8;
-  display: flex;
-  align-items: center;
-  padding-left: $spacer * 3;
-  box-shadow: $box-shadow;
-}
-
-.Side {
-  &-item {
-    color: #c2c7c9 !important;
-  }
-
-  &-icon {
-    float: none !important;
-    margin-right: ($spacer * 2) !important;
-  }
-
-  &-menu {
-    border: none !important;
-    background-color: #37474f !important;
-    border-radius: 0 !important;
-    height: 99vh;
-
-    &-item:hover {
-      background-color: #0091eb !important;
-      cursor: pointer;
-    }
-  }
-
-  &-user {
-    text-align: center;
-    margin-bottom: $spacer * 2;
-
-    &-name {
-      margin-top: $spacer * 2;
-
-      @extend %text-bold-18;
-    }
   }
 }

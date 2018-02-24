@@ -1,0 +1,11 @@
+@import "../../scss/_variables.scss";
+@import "../../scss/typography.scss";
+
+.Topbar {
+  width: 100%;
+  height: $spacer * 8;
+  display: flex;
+  align-items: center;
+  padding-left: $spacer * 3;
+  box-shadow: $box-shadow;
+}

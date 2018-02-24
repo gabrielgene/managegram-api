@@ -1,20 +1,13 @@
-import React, { Component } from 'react';
-import { Sidebar, Segment } from 'semantic-ui-react';
-import Side from './Side';
-import Topbar from './Topbar';
+import React from 'react';
+import Topbar from '../../components/Topbar';
+import './style.css';
 
 const Base = (props) => (
   <div className="Base">
-    <Sidebar.Pushable as={Segment}>
-      <Side visible />
-
-      <Sidebar.Pusher >
-        <Topbar />
-        <div className="Base-modules">
-          {props.children}
-        </div>
-      </Sidebar.Pusher>
-    </Sidebar.Pushable>
+    <Topbar />
+    <div className="Base-modules">
+      {props.children}
+    </div>
   </div>
 );
 
