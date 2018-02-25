@@ -8,7 +8,7 @@ const ProfileSchema = new mongoose.Schema({
   insta_pass: {type: String, default: ''},
   service_on: {type: Boolean, default: true},
   tag_type: {type: Boolean, default: false},
-  tag_list: {type: Array},
+  tag_list: {type: Array, default: []},
   profile_type: {type: Boolean, default: false},
   profile_list: {type: Array, default: []},
   dm_type: {type: Boolean, default: false},

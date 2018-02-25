@@ -55,3 +55,33 @@ export const postInstaVerify = (login) => {
     body: JSON.stringify(login),
   }).then(res => res.status).catch(createErrorHandler(500));
 };
+
+export const getUser = () => {
+  return fetch('/api/all', {
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  }).then(handleHttpStatus).catch(createErrorHandler([]));
+};
+
+export const getUpdateAdmEnable = (userId) => {
+  return fetch(`/api/admin/enable/${userId}`, {
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  }).then(handleHttpStatus).catch(createErrorHandler([]));
+};
+
+export const getUpdateAdmDisable = (userId) => {
+  return fetch(`/api/admin/disable/${userId}`, {
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  }).then(handleHttpStatus).catch(createErrorHandler([]));
+};

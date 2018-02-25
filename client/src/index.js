@@ -6,6 +6,7 @@ import './index.css';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Admin from './pages/Admin';
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -13,6 +14,7 @@ const App = () => (
   <Router history={browserHistory}>
     <Route path="/" component={Login} />
     <Route path="/home" component={Home} />
+    <Route path="/admin" component={Admin} />
     {/* <Redirect path="**" to="/" /> */}
   </Router>
 );

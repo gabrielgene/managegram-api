@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
 
 router.get('/all', (req, res) => {
   Profile.find({}, (err, data) => {
+    if (err) handlerError(res, err);
     return res.status(200).json(data);
   });
 });
@@ -106,6 +107,43 @@ router.post('/instaverify', (req, res) => {
         });
     });
 });
+
+router.get('/admin/enable/:userId/', (req, res) => {
+  const { userId } = req.params;
+  Profile.findOneAndUpdate(
+    {
+      userId,
+    },
+    {
+      enable_account: true
+    },
+    (err, data) => {
+      if (err) handlerError(res, err);
+      Profile.find({}, (err, data) => {
+        if (err) handlerError(res, err);
+        return res.status(200).json(data);
+      });
+    }
+  )
+});
+router.get('/admin/disable/:userId/', (req, res) => {
+  const { userId } = req.params;
+  Profile.findOneAndUpdate(
+    {
+      userId,
+    },
+    {
+      enable_account: false
+    },
+    (err, data) => {
+      if (err) handlerError(res, err);
+      Profile.find({}, (err, data) => {
+        if (err) handlerError(res, err);
+        return res.status(200).json(data);
+      });
+    }
+  )
+})
 
 handlerError = (res, err) => {
   return res.status(500).json({ status: 500, message: err.message });
