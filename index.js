@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const mongohost = process.env.MONGODB_HOST || config.mongo.uri;
 const mongodb = process.env.MONGODB_DB || config.mongo.db;
 
-mongoose.connect('mongodb://172.17.0.2:27017', (err, res) => {
+mongoose.connect(`mongodb://${mongohost}:27017/${mongodb}`, (err, res) => {
   if (err) throw err;
   console.log('Connected to MongoDB');
 });

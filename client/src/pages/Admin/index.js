@@ -46,8 +46,9 @@ class Admin extends Component {
                   <Table.HeaderCell>user</Table.HeaderCell>
                   <Table.HeaderCell>insta_user</Table.HeaderCell>
                   <Table.HeaderCell>enable_account</Table.HeaderCell>
-                  <Table.HeaderCell>last_follower</Table.HeaderCell>
-                  <Table.HeaderCell>Enable Account</Table.HeaderCell>
+                  <Table.HeaderCell>service_on</Table.HeaderCell>
+                  <Table.HeaderCell>verified_account</Table.HeaderCell>
+                  <Table.HeaderCell>button</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
@@ -59,7 +60,8 @@ class Admin extends Component {
                       <Table.Cell>{user.user}</Table.Cell>
                       <Table.Cell><a href={`https://www.instagram.com/${user.insta_user}/`}>{user.insta_user}</a></Table.Cell>
                       <Table.Cell>{String(user.enable_account)}</Table.Cell>
-                      <Table.Cell>{user.last_follower}</Table.Cell>
+                      <Table.Cell>{String(user.service_on)}</Table.Cell>
+                      <Table.Cell>{String(user.verified_account)}</Table.Cell>
                       <Table.Cell>
                         {
                           user.enable_account
