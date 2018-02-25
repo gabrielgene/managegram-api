@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, browserHistory, Route, Redirect } from 'react-router';
+import { Router, browserHistory, Route } from 'react-router';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 

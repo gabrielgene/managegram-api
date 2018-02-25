@@ -36,3 +36,7 @@
         display: flex;
         justify-content: space-between;
         margin-right: 24px; }
+
+@media (max-width: 768px) {
+  .Topbar-content-user {
+    display: none; } }

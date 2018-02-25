@@ -54,6 +54,7 @@
 
         &-dm {
           width: 400px !important;
+
           &-text {
             margin-bottom: $spacer !important;
           }
@@ -62,6 +63,25 @@
             margin-top: $spacer;
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .Configure {
+    &-account {
+      display: block;
+      padding-right: $spacer * 2;
+
+      .cards {
+        justify-content: center;
+      }
+    }
+
+    &-tasks {
+      &-group {
+        justify-content: center !important;
       }
     }
   }

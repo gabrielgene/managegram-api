@@ -35,3 +35,12 @@
         margin-bottom: 8px !important; }
       .Configure-tasks-group-card-dm-button {
         margin-top: 8px; }
+
+@media (max-width: 768px) {
+  .Configure-account {
+    display: block;
+    padding-right: 16px; }
+    .Configure-account .cards {
+      justify-content: center; }
+  .Configure-tasks-group {
+    justify-content: center !important; } }
