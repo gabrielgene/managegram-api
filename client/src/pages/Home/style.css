@@ -31,5 +31,7 @@
         margin-left: 24px; }
     .Configure-tasks-group-card-dm {
       width: 400px !important; }
+      .Configure-tasks-group-card-dm-text {
+        margin-bottom: 8px !important; }
       .Configure-tasks-group-card-dm-button {
         margin-top: 8px; }

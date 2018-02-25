@@ -54,6 +54,9 @@
 
         &-dm {
           width: 400px !important;
+          &-text {
+            margin-bottom: $spacer !important;
+          }
 
           &-button {
             margin-top: $spacer;

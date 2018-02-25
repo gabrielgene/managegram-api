@@ -3,6 +3,8 @@ const router = express.Router();
 const mongooose = require('mongoose');
 const Profile = require('../models/profile');
 const md5 = require('blueimp-md5');
+const Client = require('instagram-private-api').V1;
+const fs = require('fs');
 
 const dataExample = {
   user: 'mmanagerinsta97',
@@ -22,24 +24,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/all', (req, res) => {
-  Profile.findOne({}, (err, data) => {
+  Profile.find({}, (err, data) => {
     return res.status(200).json(data);
   });
 });
-
-router.get('/profile', (req, res) => {
-  const body = dataExample;
-  Profile.findOne({ user: body.user }, (err, data) => {
-    if (err) handlerError(res, err);
-    if (data != null) {
-      return res.status(200).send('Invalid user');
-    }
-    Profile.create(body, (err, profile) => {
-      return res.status(201).json(profile);
-    });
-  })
-});
-
 
 router.post('/login', (req, res) => {
   const { body } = req;
@@ -53,7 +41,7 @@ router.post('/login', (req, res) => {
   Profile.findOne({ user, pass }, (err, data) => {
     if (err) handlerError(res, err);
     if (data !== null) {
-      res.cookie('userCookie', userId, { maxAge: 900000 });
+      res.cookie('userId', userId, { maxAge: 900000 });
       return res.status(200).send('Logado');
     }
 
@@ -65,11 +53,58 @@ router.post('/login', (req, res) => {
 
       Profile.create(userData, (err, profile) => {
         if (err) handlerError(res, err);
-        res.cookie('userCookie', userId, { maxAge: 900000 });
+        res.cookie('userId', userId, { maxAge: 900000 });
         return res.status(201).send('Criado');
       });
     });
   });
+});
+
+router.get('/verify', (req, res) => {
+  const { userId } = req.cookies;
+
+  Profile.findOne({ userId }, (err, data) => {
+    if (err) handlerError(res, err);
+    if (data !== null) {
+      return res.status(200).json(data);
+    }
+    return res.status(403).send('Forbidden');
+  })
+});
+
+router.post('/update', (req, res) => {
+  const { userId } = req.cookies;
+  const { body } = req;
+  Profile.findOneAndUpdate(
+    {
+      userId,
+    },
+    {
+      ...body,
+    },
+    (err, data) => {
+      if (err) handlerError(res, err);
+      if (data !== null) {
+        return res.status(200).json(data);
+      }
+    }
+  )
+});
+
+router.post('/instaverify', (req, res) => {
+  res.connection.setTimeout(7000);
+  const { body } = req;
+  const { user, pass } = body;
+  const storage = new Client.CookieMemoryStorage();
+  const device = new Client.Device(user);
+  console.log('Request', user);
+  Client.Session.create(device, storage, user, pass)
+    .then(function (session) {
+      session.getAccountId()
+        .then(function (id) {
+          return res.status(200).send('ok');
+        });
+    });
 });
 
 handlerError = (res, err) => {

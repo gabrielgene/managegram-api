@@ -19,15 +19,39 @@ export const postLogin = (login) => {
       Accept: 'application/json',
     },
     body: JSON.stringify(login),
-  }).then( res => res.status).catch(createErrorHandler(500));
+  }).then(res => res.status).catch(createErrorHandler(500));
 };
 
-export const getConfig = (userId) => {
-  return fetch('/api/all', {
+export const getVerifyLogin = () => {
+  return fetch('/api/verify', {
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-  }).then(handleHttpStatus).catch(createErrorHandler({}));
+  }).then(handleHttpStatus).catch(createErrorHandler(403));
+};
+
+export const postUpdateConfig = (data) => {
+  return fetch('/api/update', {
+    credentials: 'same-origin',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(data),
+  }).then(handleHttpStatus).catch(createErrorHandler(500));
+};
+
+export const postInstaVerify = (login) => {
+  return fetch('/api/instaverify', {
+    credentials: 'same-origin',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(login),
+  }).then(res => res.status).catch(createErrorHandler(500));
 };

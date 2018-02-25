@@ -9,7 +9,6 @@ import Home from './pages/Home';
 
 import registerServiceWorker from './registerServiceWorker';
 
-
 const App = () => (
   <Router history={browserHistory}>
     <Route path="/" component={Login} />

@@ -8,4 +8,45 @@
   align-items: center;
   padding-left: $spacer * 3;
   box-shadow: $box-shadow;
+
+  &-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    &-user {
+      margin-top: ($spacer * 2) !important;
+      margin-right: ($spacer * 2) !important;
+
+      @extend %text-regular-24;
+
+      &-feed {
+        text-align: center;
+        width: 54px;
+        height: 54px;
+        margin-top: 3px;
+        background-color: #5e69c0;
+        border-radius: 81px;
+
+        &-word {
+          margin-top: 17px;
+          margin-right: 1px;
+          text-align: center;
+          font-size: 24px;
+          color: white;
+        }
+      }
+    }
+
+    &-title {
+      margin-top: ($spacer * 2) !important;
+
+      &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-right: $spacer * 3;
+      }
+    }
+  }
 }

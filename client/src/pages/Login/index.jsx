@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { withRouter } from 'react-router';
-import { getConfig } from '../../fetches';
+import { postLogin } from '../../fetches';
 import './style.css';
 
 const link = 'https://seeklogo.com/images/I/instagram-new-2016-logo-4773FE3F99-seeklogo.com.png';
@@ -16,21 +16,13 @@ class LoginForm extends Component {
     }
   }
 
-  login = (user, pass) => {
-    if (user === 'gabriel' && pass === '123') return 200;
-    if (user === 'gabriel') return 409;
-    const newAccount = window.confirm('Deseja criar uma nova conta ?');
-    const loginStatus = newAccount ? 201 : null;
-    return loginStatus;
-  }
+  login = async (user, pass) => {
+    const login = {
+      user,
+      pass,
+    };
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value });
-
-  handleSubmit = () => {
-    const { user, pass } = this.state;
-
-    const loginStatus = this.login(user, pass);
-
+    const loginStatus = await postLogin(login);
     if (loginStatus === 200) {
       this.props.router.push('/home');
     } else if (loginStatus === 409) {
@@ -40,13 +32,11 @@ class LoginForm extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getConfigUser();
-  }
+  handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
-  getConfigUser = async () => {
-    const data = await getConfig('managerinsta97');
-    console.log(data);
+  handleSubmit = () => {
+    const { user, pass } = this.state;
+    this.login(user, pass);
   }
 
   render() {

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const path = require('path');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const mongohost = process.env.MONGODB_HOST || config.mongo.uri;
 const mongodb = process.env.MONGODB_DB || config.mongo.db;
@@ -14,6 +15,8 @@ mongoose.connect('mongodb://172.17.0.2:27017', (err, res) => {
 });
 
 const app = express();
+
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
   res.status(200).send('Ok');
