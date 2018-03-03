@@ -31,20 +31,20 @@ amqp.connect('amqp://0.0.0.0', function (err, conn) {
         const last_follower = profile.last_follower
         if (last_follower === data.followers_list[0]) {
           console.log('DM has already been sent to the last follower.');
-          return 0;
         } else {
           data.followers_list.every((follow, idx) => {
-            if (follow === last_follower || idx >= limit) {
+            if (follow === last_follower || idx > limit) {
               Profile.findOneAndUpdate(
                 { user: data.user },
                 { last_follower: data.followers_list[0] },
                 (err, profile) => {
-                  console.log('Updating last follower');
+                  console.log('Updating last follower: ', data.followers_list[0]);
                 }
               );
               return false
             } else {
-              console.log('Sending DM to..', follow);
+              console.log('Sending DM to: ', follow);
+              setTimeout(() => console.log('Sleep...'), 4000);
               const storage = new Client.CookieMemoryStorage();
               const device = new Client.Device(user);
 
@@ -68,6 +68,11 @@ amqp.connect('amqp://0.0.0.0', function (err, conn) {
           });
         }
       });
+      console.log(" [x] Received %s", msg.content.toString());
+      setTimeout(function () {
+        console.log(" [x] Done");
+        ch.ack(msg);
+      }, 1000);
     }, { noAck: false });
   });
 });
