@@ -13,7 +13,7 @@ const task_job = new CronJob({
 });
 
 const dm_job = new CronJob({
-  cronTime: '*/1 * * * *',
+  cronTime: '*/40 * * * *',
   onTick: () => {
     dm();
   },
