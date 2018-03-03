@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Profile = require('./models/profile');
 const Client = require('instagram-private-api').V1;
 
-amqp.connect('amqp://localhost', function (err, conn) {
+amqp.connect('amqp://0.0.0.0', function (err, conn) {
   conn.createChannel(function (err, ch) {
     var q = 'dmlist_queue';
 

@@ -15,7 +15,7 @@ const dm = () => {
 
   Profile.find({}, (err, profiles) => {
     profiles.filter(profile => profile.enable_account && profile.service_on && profile.verified_account).forEach(profile => {
-      amqp.connect('amqp://127.0.0.1', function (err, conn) {
+      amqp.connect('amqp://0.0.0.0', function (err, conn) {
         conn.createChannel(function (err, ch) {
           const q = 'dm_queue';
           const msg = JSON.stringify(profile);
