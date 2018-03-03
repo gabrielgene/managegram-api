@@ -14,16 +14,16 @@ amqp.connect('amqp://localhost', function (err, conn) {
     ch.consume(q, function (msg) {
       const message = msg.content.toString()
       const data = JSON.parse(message);
-      const user = data.user;
-      const pass = data.pass;
+      const user = data.insta_user;
+      const pass = data.insta_pass;
       const limit = 0;
 
       data.followers_list.forEach((follow, idx) => {
 
         if (idx <= limit) {
 
-          var storage = new Client.CookieFileStorage(__dirname + '/cookies/' + user + '.json');
-          var device = new Client.Device(user);
+          const storage = new Client.CookieMemoryStorage();
+          const device = new Client.Device(user);
 
           Client.Session.create(device, storage, user, pass)
             .then(function (session) {
