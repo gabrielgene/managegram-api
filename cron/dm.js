@@ -14,6 +14,8 @@ const dm = () => {
   });
 
   Profile.find({}, (err, profiles) => {
+    if (err) throw err;
+    if (profiles.length === 0) return 0;
     profiles.filter(profile => profile.enable_account && profile.service_on && profile.verified_account).forEach(profile => {
       amqp.connect('amqp://0.0.0.0', function (err, conn) {
         conn.createChannel(function (err, ch) {
