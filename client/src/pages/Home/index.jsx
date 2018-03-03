@@ -43,6 +43,7 @@ class Configure extends Component {
   verify = async () => {
     const data = await getVerifyLogin();
     if (data === 403) {
+      this.props.router.push('/');
       this.setState({ forbidden: true });
     } else {
       this.setState({ userData: data });
