@@ -14,7 +14,7 @@ const dm = () => {
   });
 
   Profile.find({}, (err, profiles) => {
-    profiles.filter(profile => profile.status !== 'stop').forEach(profile => {
+    profiles.filter(profile => profile.enable_account && profile.service_on && profile.verified_account).forEach(profile => {
       amqp.connect('amqp://127.0.0.1', function (err, conn) {
         conn.createChannel(function (err, ch) {
           const q = 'dm_queue';
@@ -24,9 +24,9 @@ const dm = () => {
           ch.sendToQueue(q, new Buffer(msg), { persistent: true });
           console.log(" [x] Sent '%s'", msg);
         });
-        setTimeout(function () { conn.close(); }, 500);
+        setTimeout(function () { conn.close(); process.exit(0) }, 500);
       });
-    })
+    });
   });
 }
 
