@@ -19,7 +19,7 @@
   },
   "scripts": {
     "cron": "node cron",
-    "start": "node index",
+    "start": "npm run mongo; npm run rabbit; node index",
     "mongo": "./scripts/mongo-docker.sh",
     "rabbit": "./scripts/rabbit-docker.sh"
   }
