@@ -42,7 +42,7 @@ router.post('/login', (req, res) => {
   Profile.findOne({ user, pass }, (err, data) => {
     if (err) handlerError(res, err);
     if (data !== null) {
-      res.cookie('userId', userId, { maxAge: 900000 });
+      res.cookie('userId', userId, { maxAge: 365 * 24 * 60 * 60 * 1000 });
       return res.status(200).send('Logado');
     }
 
