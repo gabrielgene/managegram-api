@@ -6,19 +6,6 @@ const md5 = require('blueimp-md5');
 const Client = require('instagram-private-api').V1;
 const fs = require('fs');
 
-const dataExample = {
-  user: 'mmanagerinsta97',
-  pass: 'insta@123',
-  status: 'start',
-  tag_type: 'enable',
-  tag_list: ['hero'],
-  profile_type: 'enable',
-  profile_list: ['marvel'],
-  dm_type: 'enable',
-  dm_message: 'Olá, se chegou é pq funcionou.',
-  last_follower: ''
-}
-
 router.get('/', (req, res) => {
   return res.status(200).send('Ok');
 });
@@ -93,7 +80,7 @@ router.post('/update', (req, res) => {
 });
 
 router.post('/instaverify', (req, res) => {
-  res.connection.setTimeout(7000);
+  res.connection.setTimeout(9000);
   const { body } = req;
   const { user, pass } = body;
   const storage = new Client.CookieMemoryStorage();

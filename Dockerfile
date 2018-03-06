@@ -1,13 +1,12 @@
-FROM node:argon
+FROM node:8.9.1
 
 RUN mkdir -p /app
 WORKDIR /app
+COPY . .
+RUN cd client; yarn build
 
-COPY package.json /app
-RUN npm install
+RUN yarn
 
-COPY . /app
+EXPOSE 8080
 
-EXPOSE 5000
-
-CMD ["npm", "start"]
+CMD ["yarn", "start"]

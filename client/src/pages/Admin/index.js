@@ -58,7 +58,7 @@ class Admin extends Component {
                     <Table.Row key={user.user}>
                       <Table.Cell>{user.userId}</Table.Cell>
                       <Table.Cell>{user.user}</Table.Cell>
-                      <Table.Cell><a href={`https://www.instagram.com/${user.insta_user}/`}>{user.insta_user}</a></Table.Cell>
+                      <Table.Cell><a target="_blank" href={`https://www.instagram.com/${user.insta_user}/`}>{user.insta_user}</a></Table.Cell>
                       <Table.Cell>{String(user.enable_account)}</Table.Cell>
                       <Table.Cell>{String(user.service_on)}</Table.Cell>
                       <Table.Cell>{String(user.verified_account)}</Table.Cell>

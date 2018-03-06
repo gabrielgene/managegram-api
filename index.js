@@ -18,17 +18,13 @@ const app = express();
 
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
+app.get('/health', (req, res) => {
   res.status(200).send('Ok');
 })
 
 app.use('/api', cors(), bodyParser.json(), require('./routes'));
 
-// app.use(express.static(path.join(__dirname, 'client/build')));
-
-// app.get('/app', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-// });
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.set('port', process.env.PORT || config.app.port);
 
