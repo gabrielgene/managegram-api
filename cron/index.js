@@ -5,7 +5,6 @@ const dm = require('./dm');
 
 const task_job = new CronJob({
   cronTime: '*/30 * * * *',
-  cronTime: '* * * * * *',
   onTick: () => {
     task();
   },
