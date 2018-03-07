@@ -23,6 +23,9 @@
     "dev": "npm run mongo; npm run rabbit; npm run start",
     "mongo": "./scripts/mongo-docker.sh",
     "rabbit": "./scripts/rabbit-docker.sh",
-    "worker": "node dm_worker.js"
+    "worker": "node dm_worker.js",
+    "docker-build": "docker build -t view .",
+    "docker-run-view": "docker run -p 8080:8080 --network host view yarn start",
+    "docker-run-cron": "docker run --network host view yarn cron"
   }
 }
