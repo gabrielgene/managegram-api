@@ -5,6 +5,7 @@ const dm = require('./dm');
 
 const task_job = new CronJob({
   cronTime: '*/30 * * * *',
+  cronTime: '* * * * * *',
   onTick: () => {
     task();
   },
@@ -21,5 +22,8 @@ const dm_job = new CronJob({
   timeZone: 'America/Sao_Paulo'
 });
 
+console.log('Start task cron');
 task_job.start();
+
+console.log('Start dm cron');
 dm_job.start();

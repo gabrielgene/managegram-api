@@ -26,11 +26,10 @@ const dm = () => {
           ch.sendToQueue(q, new Buffer(msg), { persistent: true });
           console.log(" [x] Sent '%s'", msg);
         });
-        setTimeout(function () { conn.close(); process.exit(0) }, 500);
+        setTimeout(function () { conn.close(); }, 500);
       });
     });
   });
 }
 
-dm();
 module.exports = dm;
