@@ -96,6 +96,9 @@ class LoginForm extends Component {
             </Message>
           </Grid.Column>
         </Grid>
+        <a onClick={() => this.props.router.push('/admin')}>
+          Admin
+        </a>
       </div>
 
     )
