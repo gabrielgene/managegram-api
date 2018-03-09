@@ -24,9 +24,9 @@
     "mongo": "./scripts/mongo-docker.sh",
     "rabbit": "./scripts/rabbit-docker.sh",
     "worker": "node dm_worker.js",
-    "docker-build": "docker build -t insta-js .",
-    "docker-run-view": "docker run -p 8080:8080 --network host insta-js yarn start",
-    "docker-run-cron": "docker run --network host insta-js yarn cron",
-    "docker-run-worker": "docker run --network host insta-js yarn worker"
+    "docker-build": "./scripts/docker-build.sh",
+    "docker-run-view": "docker run -p 8080:8080 --network host gabrielgene/insta-js yarn start",
+    "docker-run-cron": "docker run --network host gabrielgene/insta-js yarn cron",
+    "docker-run-worker": "docker run --network host gabrielgene/insta-js yarn worker"
   }
 }
