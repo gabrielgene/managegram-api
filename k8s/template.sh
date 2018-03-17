@@ -18,6 +18,6 @@ spec:
       - args:
         - yarn
         - ${YARN_ARG}
-        image: gabrielgene/${NAME}
+        image: gabrielgene/${NAME}:${TAG}
         name: ${NAME}
 EOF
