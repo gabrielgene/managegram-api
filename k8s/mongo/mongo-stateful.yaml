@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: mongo
+  labels:
+    name: mongo
+spec:
+  serviceName: mongo
+  selector:
+    matchLabels:
+      name: mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: mongo
+    spec:
+      containers:
+      - image: mongo
+        name: mongo
+        ports:
+        - name: mongo
+          containerPort: 27017
+          hostPort: 27017
+        volumeMounts:
+        - name: mongo-claim
+          mountPath: /data/db
+      volumes:
+      - name: mongo-claim
+        persistentVolumeClaim:
+          claimName: mongo-claim
+  volumeClaimTemplates:
+  - metadata:
+      name: mongo-claim
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      storageClassName: standard
+      resources:
+        requests:
+          storage: 10Gi
