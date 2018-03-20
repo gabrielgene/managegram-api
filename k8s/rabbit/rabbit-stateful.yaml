@@ -20,8 +20,8 @@ spec:
         name: rabbit
         ports:
         - name: rabbit
-          containerPort: 27017
-          hostPort: 27017
+          containerPort: 5672
+          hostPort: 5672
         volumeMounts:
         - name: rabbit-claim
           mountPath: /data/db
