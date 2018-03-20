@@ -15,6 +15,9 @@ spec:
         app: ${NAME}
     spec:
       containers:
+        resources:
+          limits:
+            cpu: "0.1"
       - args:
         - yarn
         - ${YARN_ARG}

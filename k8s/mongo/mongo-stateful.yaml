@@ -17,6 +17,9 @@ spec:
     spec:
       containers:
       - image: mongo
+        resources:
+          limits:
+            cpu: "0.1"
         name: mongo
         ports:
         - name: mongo

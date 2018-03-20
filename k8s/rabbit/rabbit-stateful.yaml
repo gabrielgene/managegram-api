@@ -17,6 +17,9 @@ spec:
     spec:
       containers:
       - image: rabbitmq
+        resources:
+          limits:
+            cpu: "0.1"
         name: rabbit
         ports:
         - name: rabbit
