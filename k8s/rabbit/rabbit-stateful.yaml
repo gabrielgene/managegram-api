@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: rabbit
+  labels:
+    name: rabbit
+spec:
+  serviceName: rabbit
+  selector:
+    matchLabels:
+      name: rabbit
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: rabbit
+    spec:
+      containers:
+      - image: rabbitmq
+        name: rabbit
+        ports:
+        - name: rabbit
+          containerPort: 27017
+          hostPort: 27017
+        volumeMounts:
+        - name: rabbit-claim
+          mountPath: /data/db
+      volumes:
+      - name: rabbit-claim
+        persistentVolumeClaim:
+          claimName: rabbit-claim
+  volumeClaimTemplates:
+  - metadata:
+      name: rabbit-claim
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      storageClassName: standard
+      resources:
+        requests:
+          storage: 10Gi

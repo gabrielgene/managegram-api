@@ -6,3 +6,5 @@ config.app.port = 8080;
 config.mongo = {};
 config.mongo.uri = 'mongo';
 config.mongo.db = 'managegram';
+
+config.rabbit.uri = 'rabbit';

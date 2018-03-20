@@ -6,6 +6,7 @@ const config = require('../config');
 
 const mongohost = process.env.MONGODB_HOST || config.mongo.uri;
 const mongodb = process.env.MONGODB_DB || config.mongo.db;
+const rabbithost = process.env.RABBIT_HOST || config.rabbit.uri;
 
 const dm = () => {
   mongoose.connect(`mongodb://${mongohost}:27017/${mongodb}`, (err, res) => {
@@ -17,7 +18,7 @@ const dm = () => {
     if (err) throw err;
     if (profiles.length === 0) return 0;
     profiles.filter(profile => profile.enable_account && profile.service_on && profile.verified_account).forEach(profile => {
-      amqp.connect('amqp://0.0.0.0', function (err, conn) {
+      amqp.connect(`amqp://${rabbithost}`, function (err, conn) {
         conn.createChannel(function (err, ch) {
           const q = 'dm_queue';
           const msg = JSON.stringify(profile);
