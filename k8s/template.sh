@@ -1,26 +1,26 @@
 #!/bin/bash
 
 cat <<EOF
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1beta2
 kind: Deployment
 metadata:
   labels:
-    app: ${NAME}
-  name: ${NAME}
+    app: ${APP}
+  name: ${APP}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: ${NAME}
+        app: ${APP}
     spec:
       containers:
         resources:
-          limits:
+          requests:
             cpu: "0.1"
       - args:
         - yarn
         - ${YARN_ARG}
-        image: gabrielgene/${NAME}:${TAG}
-        name: ${NAME}
+        image: gabrielgene/${IMAGE}:${TAG}
+        name: ${APP}
 EOF
