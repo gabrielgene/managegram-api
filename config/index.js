@@ -7,4 +7,5 @@ config.mongo = {};
 config.mongo.uri = 'mongo';
 config.mongo.db = 'managegram';
 
+config.rabbit = {};
 config.rabbit.uri = 'rabbit';

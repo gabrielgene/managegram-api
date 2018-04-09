@@ -18,9 +18,9 @@ const app = express();
 
 app.use(cookieParser());
 
-app.get('/health', (req, res) => {
-  res.status(200).send('Ok');
-})
+app.use(express.static('static'));
+
+app.get('/health', (req, res) => res.sendStatus(200));
 
 app.use('/api', cors(), bodyParser.json(), require('./routes'));
 
