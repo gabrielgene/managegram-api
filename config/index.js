@@ -4,8 +4,8 @@ config.app = {};
 config.app.port = 8080;
 
 config.mongo = {};
-config.mongo.uri = 'mongo';
+config.mongo.uri = '0.0.0.0';
 config.mongo.db = 'managegram';
 
 config.rabbit = {};
-config.rabbit.uri = 'rabbit';
+config.rabbit.uri = '0.0.0.0';
