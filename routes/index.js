@@ -5,6 +5,7 @@ const Profile = require('../models/profile');
 const md5 = require('blueimp-md5');
 const Client = require('instagram-private-api').V1;
 const fs = require('fs');
+const task = require('../cron/task');
 
 router.get('/', (req, res) => {
   return res.status(200).send('Ok');
@@ -16,6 +17,12 @@ router.get('/all', (req, res) => {
     return res.status(200).json(data);
   });
 });
+
+router.get('/task', (req, res) => {
+  console.log('Running task...')
+  task();
+  res.sendStatus(200);
+})
 
 router.post('/login', (req, res) => {
   const { body } = req;
