@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const Profile = require('../models/profile');
 const config = require('../config');
 
-const mongohost = process.env.MONGODB_HOST || config.mongo.uri;
-const mongodb = process.env.MONGODB_DB || config.mongo.db;
-const rabbithost = process.env.RABBIT_HOST || config.rabbit.uri;
+const mongohost = config.mongo.uri;
+const mongodb = config.mongo.db;
+const rabbithost = config.rabbit.uri;
 
 const task = () => {
   mongoose.connect(`mongodb://${mongohost}:27017/${mongodb}`, (err, res) => {
@@ -14,10 +14,10 @@ const task = () => {
     console.log('Connected to MongoDB');
   });
 
-  Profile.find({}, (err, profiles) => {
+  Profile.find({ enable_account: true, service_on: true, verified_account: true }, (err, profiles) => {
     if (err) throw err;
     if (profiles.length === 0) return 0;
-    profiles.filter(profile => profile.enable_account && profile.service_on && profile.verified_account).forEach(profile => {
+    profiles.forEach(profile => {
       amqp.connect(`amqp://${rabbithost}`, function (err, conn) {
         conn.createChannel(function (err, ch) {
           const q = 'task_queue';

@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const Profile = require('../models/profile');
 const config = require('../config');
 
-const mongohost = process.env.MONGODB_HOST || config.mongo.uri;
-const mongodb = process.env.MONGODB_DB || config.mongo.db;
-const rabbithost = process.env.RABBIT_HOST || config.rabbit.uri;
+const mongohost = config.mongo.uri;
+const mongodb = config.mongo.db;
+const rabbithost = config.rabbit.uri;
 
 const dm = () => {
   mongoose.connect(`mongodb://${mongohost}:27017/${mongodb}`, (err, res) => {

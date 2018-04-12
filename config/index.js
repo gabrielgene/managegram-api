@@ -8,4 +8,4 @@ config.mongo.uri = process.env.MONGO_URI || '0.0.0.0';
 config.mongo.db = 'managegram';
 
 config.rabbit = {};
-config.rabbit.uri = process.env.RABBIT_URL || '0.0.0.0';
+config.rabbit.uri = process.env.RABBIT_URI || '0.0.0.0';
