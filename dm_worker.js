@@ -5,9 +5,9 @@ const Profile = require('./models/profile');
 const Client = require('instagram-private-api').V1;
 const config = require('./config');
 
-const mongohost = process.env.MONGODB_HOST || config.mongo.uri;
-const rabbithost = process.env.RABBIT_HOST || config.rabbit.uri;
-const mongodb = process.env.MONGODB_DB || config.mongo.db;
+const mongohost = config.mongo.uri;
+const rabbithost = config.rabbit.uri;
+const mongodb = config.mongo.db;
 
 amqp.connect(`amqp://${rabbithost}`, function (err, conn) {
   conn.createChannel(function (err, ch) {
