@@ -84,7 +84,7 @@ router.post('/instaverify', (req, res) => {
   const { body } = req;
   const { user, pass } = body;
   const storage = new Client.CookieMemoryStorage();
-  const device = new Client.Device(user);
+  const device = new Client.Device((Math.floor(Math.random() * 999999) + 1).toString());
   console.log('Request', user);
   Client.Session.create(device, storage, user, pass)
     .then(function (session) {
