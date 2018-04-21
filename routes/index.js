@@ -80,7 +80,7 @@ router.post('/update', (req, res) => {
 });
 
 router.post('/instaverify', (req, res) => {
-  res.connection.setTimeout(9000);
+  // res.connection.setTimeout(12000);
   const { body } = req;
   const { user, pass } = body;
   const storage = new Client.CookieMemoryStorage();
@@ -92,8 +92,12 @@ router.post('/instaverify', (req, res) => {
     .then(function (session) {
       session.getAccountId()
         .then(function (id) {
+          console.log(id, user, 'Logged')
           return res.status(200).send('ok');
         });
+    }, function (error) {
+      console.log(error);
+      return res.status(401).send('wrong pass');
     });
 });
 
