@@ -86,6 +86,8 @@ router.post('/instaverify', (req, res) => {
   const storage = new Client.CookieMemoryStorage();
   const device = new Client.Device((Math.floor(Math.random() * 999999) + 1).toString());
   console.log('Request', user);
+  // Client.Request.setProxy('http://179.61.213.118:60099/')
+  Client.Request.setProxy('http://falecomfilipe:XYTzWvM1@179.61.213.118:60099/')
   Client.Session.create(device, storage, user, pass)
     .then(function (session) {
       session.getAccountId()

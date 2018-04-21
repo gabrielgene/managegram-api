@@ -50,7 +50,7 @@ class Configure extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.verify();
   }
 

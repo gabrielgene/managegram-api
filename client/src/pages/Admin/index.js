@@ -14,7 +14,7 @@ class Admin extends Component {
     console.log(usersList)
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // const value = prompt('Admin password');
     const value = 'gabriel123';
     if (value === 'gabriel123') {
