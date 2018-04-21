@@ -49,6 +49,8 @@ amqp.connect(`amqp://${rabbithost}`, function (err, conn) {
               const storage = new Client.CookieMemoryStorage();
               const device = new Client.Device(user);
 
+              // Client.Request.setProxy('http://179.61.213.118:60099/')
+              Client.Request.setProxy('http://falecomfilipe:XYTzWvM1@179.61.213.118:60099/')
               Client.Session.create(device, storage, user, pass)
                 .then(function (session) {
                   return [session, Client.Account.searchForUser(session, follow)]
