@@ -26,8 +26,13 @@ app.use('/api', cors(), bodyParser.json(), require('./routes'));
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+// Always return the main index.html, so react-router render the route in the client
+app.get(/.*/, (req, res) => {
+  return res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
+});
+
 app.set('port', process.env.PORT || config.app.port);
 
 app.listen(app.get('port'), () => {
-  console.log(`service RESTful API server started on: ${app.get('port')}`);
+  console.log(`service RESTful API server started oon: ${app.get('port')}`);
 });
