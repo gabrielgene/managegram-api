@@ -16,7 +16,10 @@ const task = () => {
 
   Profile.find({ enable_account: true, service_on: true, verified_account: true }, (err, profiles) => {
     if (err) throw err;
-    if (profiles.length === 0) return 0;
+    if (profiles.length === 0) {
+      console.log('Dont have profiles');
+      return 0
+    };
     profiles.forEach(profile => {
       amqp.connect(`amqp://${rabbithost}`, function (err, conn) {
         conn.createChannel(function (err, ch) {
