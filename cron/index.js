@@ -4,7 +4,7 @@ const task = require('./task');
 const dm = require('./dm');
 
 const task_job = new CronJob({
-  cronTime: '*/3 * * * *',
+  cronTime: '*/2 * * * *',
   onTick: () => {
     task();
   },
@@ -13,7 +13,7 @@ const task_job = new CronJob({
 });
 
 const dm_job = new CronJob({
-  cronTime: '*/3 * * * *',
+  cronTime: '*/2 * * * *',
   onTick: () => {
     dm();
   },
